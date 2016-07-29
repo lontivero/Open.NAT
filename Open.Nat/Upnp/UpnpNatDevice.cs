@@ -430,7 +430,10 @@ namespace Open.Nat
 
 				var messageResponse = new GetPortMappingEntryResponseMessage(responseData, DeviceInfo.ServiceType, false);
 
-				return new Mapping(messageResponse.Protocol
+				if (messageResponse.Protocol != protocol)
+					NatDiscoverer.TraceSource.LogWarn("Router responded to a protocol {0} query with a protocol {1} answer, work around applied.", protocol, messageResponse.Protocol);
+
+				return new Mapping(protocol
 					, IPAddress.Parse(messageResponse.InternalClient)
 					, messageResponse.InternalPort
 					, publicPort // messageResponse.ExternalPort is short.MaxValue
