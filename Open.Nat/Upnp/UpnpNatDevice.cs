@@ -145,6 +145,7 @@ namespace Open.Nat
 			if(mapping.PrivateIP.Equals(IPAddress.None)) mapping.PrivateIP =  DeviceInfo.LocalAddress;
 
 			NatDiscoverer.TraceSource.LogInfo("CreatePortMapAsync - Creating port mapping {0}", mapping);
+			bool retry = false;
 			try
 			{
 				var message = new CreatePortMappingRequestMessage(mapping);
@@ -162,17 +163,17 @@ namespace Open.Nat
 						mapping.Lifetime = 0;
 						// We create the mapping anyway. It must be released on shutdown.
 						mapping.LifetimeType = MappingLifetime.ForcedSession;
-						CreatePortMapAsync(mapping);
+						retry = true;
 						break;
 					case UpnpConstants.SamePortValuesRequired:
 						NatDiscoverer.TraceSource.LogWarn("Same Port Values Required - Using internal port {0}", mapping.PrivatePort);
 						mapping.PublicPort = mapping.PrivatePort;
-						CreatePortMapAsync(mapping);
+						retry = true;
 						break;
 					case UpnpConstants.RemoteHostOnlySupportsWildcard:
 						NatDiscoverer.TraceSource.LogWarn("Remote Host Only Supports Wildcard");
 						mapping.PublicIP = IPAddress.None;
-						CreatePortMapAsync(mapping);
+						retry = true;
 						break;
 					case UpnpConstants.ExternalPortOnlySupportsWildcard:
 						NatDiscoverer.TraceSource.LogWarn("External Port Only Supports Wildcard");
@@ -185,6 +186,8 @@ namespace Open.Nat
 						throw;
 				}
 			}
+			if (retry)
+				await CreatePortMapAsync(mapping);
 		}
 #endif
 
