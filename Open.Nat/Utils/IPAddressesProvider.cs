@@ -56,13 +56,14 @@ namespace Open.Nat
 
 		private static IEnumerable<IPAddress> IPAddresses(Func<IPInterfaceProperties, IEnumerable<IPAddress>> ipExtractor)
 		{
+			var addressFamily = Socket.OSSupportsIPv6 ? AddressFamily.InterNetworkV6 :AddressFamily.InterNetwork;
 			return from networkInterface in NetworkInterface.GetAllNetworkInterfaces()
 				   where
 					   networkInterface.OperationalStatus == OperationalStatus.Up ||
 					   networkInterface.OperationalStatus == OperationalStatus.Unknown
 				   let properties = networkInterface.GetIPProperties()
 				   from address in ipExtractor(properties)
-				   where address.AddressFamily == AddressFamily.InterNetwork
+				   where address.AddressFamily == addressFamily
 				   select address;
 		}
 	}

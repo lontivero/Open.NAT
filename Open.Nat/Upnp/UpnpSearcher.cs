@@ -87,10 +87,10 @@ namespace Open.Nat
 
 		protected override void Discover(UdpClient client, CancellationToken cancelationToken)
 		{
+			var multicastAddress = Socket.OSSupportsIPv6 ? WellKnownConstants.IPv6MulticastAddress : WellKnownConstants.IPv4MulticastAddress;
 			NextSearch = DateTime.UtcNow.AddSeconds(1);
 			var searchEndpoint = new IPEndPoint(
-				WellKnownConstants.IPv4MulticastAddress
-				/*IPAddress.Broadcast*/
+				multicastAddress
 				, 1900);
 
 			foreach (var serviceType in ServiceTypes)
