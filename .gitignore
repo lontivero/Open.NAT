@@ -13,3 +13,6 @@ packages/
 
 #ignore Resharper folders
 _ReSharper*/
+/.vs/Open.Nat/DesignTimeBuild
+/.vs/Open.Nat/v15/Server/sqlite3
+/Open.Nat/.vs/Open.Nat.old/v15/Server/sqlite3

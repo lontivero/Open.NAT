@@ -1,160 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5D74163-145F-47BF-83DC-D0E07249C6CA}</ProjectGuid>
+    <TargetFrameworks>netstandard2.0;net35;net45;net451;net452;net46;net461;net462;net47;net471</TargetFrameworks>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <PackageId>Open.Nat</PackageId>
+    <Authors>Alan McGovern, Ben Motmans, Lucas Ontivero</Authors>
+    <Product>Open.Nat</Product>
+    <PackageTags>Networking</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Description>.NET Library for automatic network address translation</Description>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Copyright>Copyright Alan McGovern, Ben Motmans, Lucas Ontivero ©  2006-2014</Copyright>
+    <Version>2.1.0.0</Version>
+    <FileVersion>1.0.1.0</FileVersion>
     <OutputType>Library</OutputType>
-    <NoStandardLibraries>false</NoStandardLibraries>
-    <AssemblyName>Open.Nat</AssemblyName>
-    <RootNamespace>Open.Nat</RootNamespace>
-    <ProductVersion>8.0.50727</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>2.0</OldToolsVersion>
-    <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 4.5|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\net45\</OutputPath>
-    <IntermediateOutputPath>obj\Debug\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45</DefineConstants>
-    <WarningLevel>0</WarningLevel>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Open.Nat</RootNamespace>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Debug\net45\Open.Nat.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 4.5|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\net45\</OutputPath>
-    <IntermediateOutputPath>obj\Release\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;NET45</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Open.Nat</RootNamespace>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Release\net45\Open.Nat.XML</DocumentationFile>
+    <StartupObject />
+    <InternalsVisibleTo>Open.Nat.UnitTests,PublicKey=00240000048000009400000006020000002400005253413100040000010001004de491ec95076f7054ac0562395232c4c351bce7037c7e266a5cc5dc6c60738fe649e06513ca1d58edec8e6a60e969887403a09ae158a007a592f650fe98912e7029e112e61494a47eff16138b62390241e1d8d45076ac3af77b47fa67d40ba1928a37ebe073415785a23ae87b6119f63f78f04cb3b8ea280dfbf3d6df437fbf</InternalsVisibleTo>
   </PropertyGroup>
   <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>Open.Nat.snk</AssemblyOriginatorKeyFile>
+    <RepositoryUrl>https://github.com/lontivero/Open.NAT</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug 3.5|AnyCPU'">
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\net35\</OutputPath>
-    <IntermediateOutputPath>obj\Debug\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;NET35</DefineConstants>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DocumentationFile>bin\Debug\net35\Open.Nat.XML</DocumentationFile>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release 3.5|AnyCPU'">
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>bin\Release\net35\</OutputPath>
-    <IntermediateOutputPath>obj\Debug\net35\</IntermediateOutputPath>
-    <DefineConstants>TRACE;NET35</DefineConstants>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <WarningLevel>0</WarningLevel>
-    <DocumentationFile>bin\Release\net35\Open.Nat.XML</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0'">
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-	 <Reference Include="System.Threading, Version=1.0.2856.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
-		 Condition="'$(Configuration)|$(Platform)' == 'Release 3.5|AnyCPU' OR '$(Configuration)|$(Platform)' == 'Debug 3.5|AnyCPU'">
-      <HintPath>..\packages\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'!='net35' and '$(TargetFramework)'!='netstandard2.0'">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Finalizer.cs" />
-    <Compile Include="Utils\Guard.cs" />
-    <Compile Include="NatDevice.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Enums\ProtocolType.cs" />
-    <Compile Include="EventArgs\DeviceEventArgs.cs" />
-    <Compile Include="Exceptions\MappingException.cs" />
-    <Compile Include="Discovery\ISearcher.cs" />
-    <Compile Include="Mapping.cs" />
-    <Compile Include="Exceptions\NatDeviceNotFoundException.cs" />
-    <Compile Include="NatDiscoverer.cs" />
-    <Compile Include="Pmp\PmpSearcher.cs" />
-    <Compile Include="Pmp\PmpConstants.cs" />
-    <Compile Include="Pmp\PmpNatDevice.cs" />
-    <Compile Include="PortMapper.cs" />
-    <Compile Include="Discovery\Searcher.cs" />
-    <Compile Include="Upnp\UpnpSearcher.cs" />
-    <Compile Include="Upnp\DiscoveryResponseMessage.cs" />
-    <Compile Include="Upnp\Messages\DiscoverDeviceMessage.cs" />
-    <Compile Include="Upnp\Messages\Requests\CreatePortMappingMessage.cs" />
-    <Compile Include="Upnp\Messages\Requests\DeletePortMappingMessage.cs" />
-    <Compile Include="Upnp\Messages\Requests\GetExternalIPAddressMessage.cs" />
-    <Compile Include="Upnp\Messages\Requests\GetGenericPortMappingEntry.cs" />
-    <Compile Include="Upnp\Messages\Requests\GetSpecificPortMappingEntryMessage.cs" />
-    <Compile Include="Upnp\ResponseMessageBase.cs" />
-    <Compile Include="Upnp\Messages\Responses\GetExternalIPAddressResponseMessage.cs" />
-    <Compile Include="Upnp\Messages\Responses\GetGenericPortMappingEntryResponseMessage.cs" />
-    <Compile Include="Upnp\RequestMessageBase.cs" />
-    <Compile Include="Upnp\SoapClient.cs" />
-    <Compile Include="Upnp\UpnpConstants.cs" />
-    <Compile Include="Upnp\UpnpNatDeviceInfo.cs" />
-    <Compile Include="Upnp\UpnpNatDevice.cs" />
-    <Compile Include="Utils\Extensions.cs" />
-    <Compile Include="Utils\IIPAddressesProvider.cs" />
-    <Compile Include="Utils\IPAddressesProvider.cs" />
-    <Compile Include="Utils\WellKnownConstants.cs" />
+    <Compile Remove="Upnp\Messages\Responses\AddPortMappingResponseMessage.cs" />
+    <Compile Remove="Upnp\Messages\Responses\DeletePortMappingResponseMessage.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Open.Nat.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Open.Nat.snk" />
+   <ItemGroup>
+    <PackageReference Include="TaskParallelLibrary" Version="1.0.2856.0" Condition="'$(TargetFramework)'=='net35'" />
   </ItemGroup>
-  <ItemGroup />
-  <Target Name="AfterBuild">
-    <!-- Load up the information from the assembly -->
-    <GetAssemblyIdentity AssemblyFiles="$(OutputPath)$(AssemblyName).dll">
-      <Output TaskParameter="Assemblies" ItemName="OutputAssemblyInfo" />
-    </GetAssemblyIdentity>
-    <Message Text="Info: %(OutputAssemblyInfo.Version)" />
-  </Target>
-  <Target Name="Package">
-    <!-- Ensure the Package directory exists for this project -->
-    <RemoveDir Directories="NuGet" />
-    <MakeDir Directories="NuGet" />
-    <!-- Package the project -->
-    <Exec WorkingDirectory="$(BuildDir)" Command="NuGet.exe pack -Verbosity detailed -Symbols -OutputDir &quot;NuGet&quot; -Version %(OutputAssemblyInfo.Version) -Properties &quot;Configuration=$(Configuration)&quot;" />
-  </Target>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
-  <ProjectExtensions>
-    <VisualStudio AllowExistingFolder="true" />
-  </ProjectExtensions>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
