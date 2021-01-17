@@ -37,15 +37,17 @@ namespace Open.Nat
 {
 	internal sealed class PmpNatDevice : NatDevice
 	{
+		public override IPEndPoint HostEndPoint { get; }
+		public override IPAddress LocalAddress { get; }
+
 		private readonly IPAddress _publicAddress;
 
-		internal PmpNatDevice(IPAddress localAddress, IPAddress publicAddress)
+		internal PmpNatDevice(IPAddress hostEndPointAddress, IPAddress localAddress, IPAddress publicAddress)
 		{
+			HostEndPoint = new IPEndPoint(hostEndPointAddress, PmpConstants.ServerPort);
 			LocalAddress = localAddress;
 			_publicAddress = publicAddress;
 		}
-
-		internal IPAddress LocalAddress { get; private set; }
 
 #if NET35
 		public override Task CreatePortMapAsync(Mapping mapping)
@@ -123,7 +125,7 @@ namespace Open.Nat
 			Task task = Task.Factory.FromAsync<byte[], int, IPEndPoint, int>(
 						udpClient.BeginSend, udpClient.EndSend,
 						buffer, buffer.Length,
-						new IPEndPoint(LocalAddress, PmpConstants.ServerPort),
+						HostEndPoint,
 						null);
 
 			while (attempt < PmpConstants.RetryAttempts - 1)
@@ -144,7 +146,7 @@ namespace Open.Nat
 					return Task.Factory.FromAsync<byte[], int, IPEndPoint, int>(
 						udpClient.BeginSend, udpClient.EndSend,
 						buffer, buffer.Length,
-						new IPEndPoint(LocalAddress, PmpConstants.ServerPort),
+						HostEndPoint,
 						null);
 				}).Unwrap();
 
@@ -186,8 +188,7 @@ namespace Open.Nat
 					while (attempt < PmpConstants.RetryAttempts)
 					{
 						await
-							udpClient.SendAsync(buffer, buffer.Length,
-												new IPEndPoint(LocalAddress, PmpConstants.ServerPort));
+							udpClient.SendAsync(buffer, buffer.Length, HostEndPoint);
 
 						attempt++;
 						delay *= 2;
@@ -213,7 +214,7 @@ namespace Open.Nat
 
 		private void CreatePortMapListen(UdpClient udpClient, Mapping mapping)
 		{
-			var endPoint = new IPEndPoint(LocalAddress, PmpConstants.ServerPort);
+			var endPoint = HostEndPoint;
 
 			while (true)
 			{
@@ -269,7 +270,7 @@ namespace Open.Nat
 		public override string ToString()
 		{
 			return String.Format("Local Address: {0}\nPublic IP: {1}\nLast Seen: {2}",
-								 LocalAddress, _publicAddress, LastSeen);
+								 HostEndPoint.Address, _publicAddress, LastSeen);
 		}
 	}
 }

@@ -38,6 +38,9 @@ namespace Open.Nat
 {
 	internal sealed class UpnpNatDevice : NatDevice
 	{
+		public override IPEndPoint HostEndPoint => DeviceInfo.HostEndPoint;
+		public override IPAddress LocalAddress => DeviceInfo.LocalAddress;
+
 		internal readonly UpnpNatDeviceInfo DeviceInfo;
 		private readonly SoapClient _soapClient;
 

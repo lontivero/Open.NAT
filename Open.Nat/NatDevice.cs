@@ -42,6 +42,16 @@ namespace Open.Nat
 	/// </summary>
 	public abstract class NatDevice
 	{
+		/// <summary>
+		/// A local endpoint of NAT device.
+		/// </summary>
+		public abstract IPEndPoint HostEndPoint { get; }
+
+		/// <summary>
+		/// A local IP address of client.
+		/// </summary>
+		public abstract IPAddress LocalAddress { get; }
+
 		private readonly HashSet<Mapping> _openedMapping = new HashSet<Mapping>();
 		protected DateTime LastSeen { get; private set; }
 

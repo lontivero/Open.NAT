@@ -139,7 +139,7 @@ namespace Open.Nat
 			//NextSearch = DateTime.Now.AddMinutes(5);
 
 			_timeout = 250;
-			return new PmpNatDevice(endpoint.Address, publicIp);
+			return new PmpNatDevice(localAddress, endpoint.Address, publicIp);
 		}
 	}
 }
