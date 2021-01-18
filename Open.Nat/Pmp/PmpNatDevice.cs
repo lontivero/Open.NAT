@@ -37,15 +37,24 @@ namespace Open.Nat
 {
 	internal sealed class PmpNatDevice : NatDevice
 	{
-		public override IPEndPoint HostEndPoint { get; }
-		public override IPAddress LocalAddress { get; }
+		public override IPEndPoint HostEndPoint
+		{
+			get { return _hostEndPoint; }
+		}
 
+		public override IPAddress LocalAddress
+		{
+			get { return _localAddress; }
+		}
+
+		private readonly IPEndPoint _hostEndPoint;
+		private readonly IPAddress _localAddress;
 		private readonly IPAddress _publicAddress;
 
 		internal PmpNatDevice(IPAddress hostEndPointAddress, IPAddress localAddress, IPAddress publicAddress)
 		{
-			HostEndPoint = new IPEndPoint(hostEndPointAddress, PmpConstants.ServerPort);
-			LocalAddress = localAddress;
+			_hostEndPoint = new IPEndPoint(hostEndPointAddress, PmpConstants.ServerPort);
+			_localAddress = localAddress;
 			_publicAddress = publicAddress;
 		}
 
