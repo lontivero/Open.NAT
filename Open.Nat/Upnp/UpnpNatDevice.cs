@@ -38,17 +38,17 @@ namespace Open.Nat
 {
 	internal sealed class UpnpNatDevice : NatDevice
 	{
-        public override IPEndPoint HostEndPoint
-        {
-            get { return DeviceInfo.HostEndPoint; }
-        }
+		public override IPEndPoint HostEndPoint
+		{
+			get { return DeviceInfo.HostEndPoint; }
+		}
 
-        public override IPAddress LocalAddress
-        {
-            get { return DeviceInfo.LocalAddress; }
-        }
+		public override IPAddress LocalAddress
+		{
+			get { return DeviceInfo.LocalAddress; }
+		}
 
-        internal readonly UpnpNatDeviceInfo DeviceInfo;
+		internal readonly UpnpNatDeviceInfo DeviceInfo;
 		private readonly SoapClient _soapClient;
 
 		internal UpnpNatDevice(UpnpNatDeviceInfo deviceInfo)
