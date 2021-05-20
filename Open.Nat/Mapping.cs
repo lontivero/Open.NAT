@@ -83,7 +83,7 @@ namespace Open.Nat
 		/// </summary>
 		public int PublicPort { get; internal set; }
 		/// <summary>
-		/// Gets the lifetime. The Lifetime parameter tells the router how long the portmapping should be active. 
+		/// Gets the lifetime in seconds. The Lifetime parameter tells the router how long the portmapping should be active. 
 		/// Since most programs don't know this in advance, it is often set to 0, which means 'unlimited' or 'permanent'.
 		/// </summary>
 		/// <remarks>
@@ -143,7 +143,7 @@ namespace Open.Nat
 		/// <param name="privateIP">The private ip.</param>
 		/// <param name="privatePort">The private port.</param>
 		/// <param name="publicPort">The public port.</param>
-		/// <param name="lifetime">The lifetime.</param>
+		/// <param name="lifetime">The lifetime in seconds.</param>
 		/// <param name="description">The description.</param>
 		public Mapping(Protocol protocol, IPAddress privateIP, int privatePort, int publicPort, int lifetime, string description)
 		{
@@ -197,7 +197,7 @@ namespace Open.Nat
 		/// <param name="protocol">The protocol.</param>
 		/// <param name="privatePort">The private port.</param>
 		/// <param name="publicPort">The public port.</param>
-		/// <param name="lifetime">The lifetime.</param>
+		/// <param name="lifetime">The lifetime in seconds.</param>
 		/// <param name="description">The description.</param>
 		public Mapping(Protocol protocol, int privatePort, int publicPort, int lifetime, string description)
 			: this(protocol, IPAddress.None, privatePort, publicPort, lifetime, description)
